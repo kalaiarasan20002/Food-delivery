@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Food Delivery UI — Cart + Filter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar__row">
+      <div class="brand">
+        <div class="brand__logo">🍔</div>
+        <div class="brand__text">
+          <div class="brand__name">Kalai Eats</div>
+          <div class="brand__sub">Food Delivery UI (HTML • CSS • JS)</div>
+        </div>
+      </div>
+
+      <div class="topbar__actions">
+        <a class="btn btn--ghost" href="https://github.com/kalaiarasan20002" target="_blank" rel="noreferrer">
+          GitHub Profile ↗
+        </a>
+        <button class="btn btn--primary" id="openCartBtn" aria-label="Open cart">
+          🛒 Cart <span class="pill" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container layout">
+    <!-- Left: catalog -->
+    <section class="catalog">
+      <div class="hero">
+        <div>
+          <h1>Order fast. Eat happy. 😄</h1>
+          <p class="muted">
+            Category filter + Add to cart + Quantity update + Price calculation.
+            LocalStorage enabled (cart stays after refresh).
+          </p>
+        </div>
+        <div class="searchbox">
+          <input id="searchInput" type="text" placeholder="Search food… (e.g., burger, dosa)" />
+          <button class="btn btn--ghost" id="clearSearchBtn">Clear</button>
+        </div>
+      </div>
+
+      <div class="filters">
+        <div class="filters__row" id="categoryFilters"></div>
+        <div class="filters__meta">
+          <span id="resultsCount" class="muted"></span>
+        </div>
+      </div>
+
+      <div class="grid" id="productsGrid"></div>
+    </section>
+
+    <!-- Right: cart (desktop) -->
+    <aside class="cart cart--desktop" aria-label="Shopping cart">
+      <div class="cart__head">
+        <div>
+          <div class="cart__title">Your Cart</div>
+          <div class="muted" id="cartSubtitle">0 items</div>
+        </div>
+        <button class="btn btn--ghost btn--sm" id="clearCartBtn">Clear</button>
+      </div>
+
+      <div class="cart__items" id="cartItems"></div>
+
+      <div class="cart__summary">
+        <div class="row">
+          <span class="muted">Subtotal</span>
+          <span id="subtotal">₹0</span>
+        </div>
+        <div class="row">
+          <span class="muted">Delivery</span>
+          <span id="delivery">₹0</span>
+        </div>
+        <div class="row">
+          <span class="muted">Tax (5%)</span>
+          <span id="tax">₹0</span>
+        </div>
+        <div class="row total">
+          <span>Total</span>
+          <span id="total">₹0</span>
+        </div>
+
+        <button class="btn btn--primary btn--full" id="checkoutBtn">
+          Checkout
+        </button>
+        <div class="note muted" id="checkoutNote"></div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Cart drawer (mobile) -->
+  <div class="drawer" id="cartDrawer" aria-hidden="true">
+    <div class="drawer__card" role="dialog" aria-modal="true" aria-label="Cart">
+      <div class="cart__head">
+        <div>
+          <div class="cart__title">Your Cart</div>
+          <div class="muted" id="cartSubtitleMobile">0 items</div>
+        </div>
+        <div class="drawer__actions">
+          <button class="btn btn--ghost btn--sm" id="clearCartBtnMobile">Clear</button>
+          <button class="btn btn--ghost btn--sm" id="closeCartBtn">Close</button>
+        </div>
+      </div>
+
+      <div class="cart__items" id="cartItemsMobile"></div>
+
+      <div class="cart__summary">
+        <div class="row">
+          <span class="muted">Subtotal</span>
+          <span id="subtotalMobile">₹0</span>
+        </div>
+        <div class="row">
+          <span class="muted">Delivery</span>
+          <span id="deliveryMobile">₹0</span>
+        </div>
+        <div class="row">
+          <span class="muted">Tax (5%)</span>
+          <span id="taxMobile">₹0</span>
+        </div>
+        <div class="row total">
+          <span>Total</span>
+          <span id="totalMobile">₹0</span>
+        </div>
+
+        <button class="btn btn--primary btn--full" id="checkoutBtnMobile">Checkout</button>
+        <div class="note muted" id="checkoutNoteMobile"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer__row">
+      <div class="muted">
+        Built by Kalai • <a href="https://github.com/kalaiarasan20002" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+      <div class="muted">Tip: Replace sample foods with your real data.</div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

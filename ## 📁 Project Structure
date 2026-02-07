@@ -1,0 +1,6 @@
+food-delivery/
+│
+├── index.html # Main UI structure
+├── style.css # Styling & responsiveness
+├── app.js # Cart logic & JS functionality
+└── README.md
